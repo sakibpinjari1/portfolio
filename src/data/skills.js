@@ -1,0 +1,147 @@
+export const frontendSkills = [
+  {
+    name: 'React',
+    level: 90,
+    icon: 'FaReact',
+    color: 'text-blue-400',
+    glowColor: 'shadow-blue-400/50',
+    description: 'Modern UI development with hooks and context',
+  },
+  {
+    name: 'TypeScript',
+    level: 85,
+    icon: 'SiTypescript',
+    color: 'text-blue-600',
+    glowColor: 'shadow-blue-600/50',
+    description: 'Type-safe JavaScript development',
+  },
+  {
+    name: 'Next.js',
+    level: 80,
+    icon: 'SiNextdotjs',
+    color: 'text-gray-300',
+    glowColor: 'shadow-gray-300/50',
+    description: 'Full-stack React framework',
+  },
+  {
+    name: 'Tailwind CSS',
+    level: 95,
+    icon: 'SiTailwindcss',
+    color: 'text-cyan-400',
+    glowColor: 'shadow-cyan-400/50',
+    description: 'Utility-first CSS framework',
+  },
+  {
+    name: 'JavaScript',
+    level: 85,
+    icon: 'FaJs',
+    color: 'text-yellow-400',
+    glowColor: 'shadow-yellow-400/50',
+    description: 'Dynamic web development',
+  },
+  {
+    name: 'CSS3',
+    level: 90,
+    icon: 'FaCss3Alt',
+    color: 'text-blue-500',
+    glowColor: 'shadow-blue-500/50',
+    description: 'Modern styling and animations',
+  },
+];
+
+export const backendSkills = [
+  {
+    name: 'Node.js',
+    level: 80,
+    icon: 'FaNodeJs',
+    color: 'text-green-400',
+    glowColor: 'shadow-green-400/50',
+    description: 'Server-side JavaScript runtime',
+  },
+  {
+    name: 'Python',
+    level: 75,
+    icon: 'FaPython',
+    color: 'text-blue-500',
+    glowColor: 'shadow-blue-500/50',
+    description: 'Versatile programming language',
+  },
+  {
+    name: 'MongoDB',
+    level: 70,
+    icon: 'SiMongodb',
+    color: 'text-green-500',
+    glowColor: 'shadow-green-500/50',
+    description: 'NoSQL database management',
+  },
+  {
+    name: 'Firebase',
+    level: 75,
+    icon: 'SiFirebase',
+    color: 'text-yellow-500',
+    glowColor: 'shadow-yellow-500/50',
+    description: 'Backend-as-a-Service platform',
+  },
+  {
+    name: 'Docker',
+    level: 65,
+    icon: 'FaDocker',
+    color: 'text-blue-400',
+    glowColor: 'shadow-blue-400/50',
+    description: 'Containerization platform',
+  },
+  {
+    name: 'AWS',
+    level: 60,
+    icon: 'FaAws',
+    color: 'text-orange-400',
+    glowColor: 'shadow-orange-400/50',
+    description: 'Cloud computing services',
+  },
+];
+
+export const languagesSkills = [
+  {
+    name: 'JavaScript',
+    level: 85,
+    icon: 'FaJs',
+    color: 'text-yellow-400',
+    glowColor: 'shadow-yellow-400/50',
+    description: 'Dynamic web development',
+  },
+  {
+    name: 'TypeScript',
+    level: 85,
+    icon: 'SiTypescript',
+    color: 'text-blue-600',
+    glowColor: 'shadow-blue-600/50',
+    description: 'Type-safe JavaScript development',
+  },
+  {
+    name: 'Python',
+    level: 75,
+    icon: 'FaPython',
+    color: 'text-blue-500',
+    glowColor: 'shadow-blue-500/50',
+    description: 'Versatile programming language',
+  },
+];
+
+export const designSkills = [
+  {
+    name: 'Figma',
+    level: 85,
+    icon: 'SiFigma',
+    color: 'text-purple-400',
+    glowColor: 'shadow-purple-400/50',
+    description: 'Collaborative design platform',
+  },
+  {
+    name: 'UI/UX Design',
+    level: 80,
+    icon: 'FaCss3Alt',
+    color: 'text-pink-400',
+    glowColor: 'shadow-pink-400/50',
+    description: 'User interface and experience design',
+  },
+];
