@@ -79,15 +79,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center text-gray-400 text-sm">
                 <FaEnvelope className="mr-2 text-blue-400" />
-                <span>your.email@example.com</span>
+                <span>sakibshaikh.jsx@gmail.com</span>
               </div>
               <div className="flex items-center text-gray-400 text-sm">
                 <FaPhone className="mr-2 text-green-400" />
-                <span>+1 (123) 456-7890</span>
+                <span>+91 8378836896</span>
               </div>
               <div className="flex items-center text-gray-400 text-sm">
                 <FaMapMarkerAlt className="mr-2 text-red-400" />
-                <span>Your City, Country</span>
+                <span>India</span>
               </div>
             </div>
           </motion.div>
@@ -105,7 +105,7 @@ const Footer = () => {
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.label}
-                  href={social.href}
+                  href={social.label === 'GitHub' ? 'https://github.com/sakibpinjari' : social.label === 'LinkedIn' ? 'https://www.linkedin.com/in/sakib-pinjari-a72536272' : social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -133,7 +133,7 @@ const Footer = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Sakib Shaikh. All rights reserved.
           </p>
           <p className="text-gray-500 text-xs mt-2">
             Built with React, Three.js, and Framer Motion

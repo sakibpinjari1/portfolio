@@ -108,15 +108,15 @@ const Contact = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <FaEnvelope className="text-blue-400 mr-4" />
-                <span className="text-gray-300">your.email@example.com</span>
+                <span className="text-gray-300">sakibshaikh.jsx@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <FaPhone className="text-blue-400 mr-4" />
-                <span className="text-gray-300">+1 (123) 456-7890</span>
+                <span className="text-gray-300">+91 8378836896</span>
               </div>
               <div className="flex items-center">
                 <FaMapMarkerAlt className="text-blue-400 mr-4" />
-                <span className="text-gray-300">Your City, Country</span>
+                <span className="text-gray-300">India</span>
               </div>
             </div>
           </motion.div>
@@ -228,8 +228,8 @@ const Contact = () => {
           <h3 className="text-2xl font-semibold text-white mb-8">Connect With Me</h3>
           <div className="flex justify-center space-x-6">
             {[
-              { icon: FaGithub, href: 'https://github.com', color: 'hover:text-gray-300' },
-              { icon: FaLinkedin, href: 'https://linkedin.com', color: 'hover:text-blue-400' },
+              { icon: FaGithub, href: 'https://github.com/sakibpinjari', color: 'hover:text-gray-300' },
+              { icon: FaLinkedin, href: 'https://www.linkedin.com/in/sakib-pinjari-a72536272', color: 'hover:text-blue-400' },
               { icon: FaTwitter, href: 'https://twitter.com', color: 'hover:text-blue-300' },
               { icon: FaInstagram, href: 'https://instagram.com', color: 'hover:text-pink-400' },
             ].map((social, index) => (
