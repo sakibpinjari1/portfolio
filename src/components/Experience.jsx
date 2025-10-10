@@ -66,7 +66,7 @@ const Experience = () => {
               {/* Content */}
               <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                 <motion.div
-                  className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  className="bg-gray-800/80 rounded-xl p-6 border border-gray-700 hover:bg-gray-800 transition-all duration-300"
                   whileHover={{ scale: 1.02, y: -5 }}
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
@@ -78,8 +78,8 @@ const Experience = () => {
                   <div className="mt-4">
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
                       exp.type === 'work'
-                        ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                        : 'bg-green-500/20 text-green-300 border border-green-500/30'
+                        ? 'bg-blue-500 text-white border border-blue-500'
+                        : 'bg-green-500 text-white border border-green-500'
                     }`}>
                       {exp.type === 'work' ? 'Work Experience' : 'Education'}
                     </span>

@@ -13,7 +13,7 @@ import Cursor from './components/Cursor';
 
 function App() {
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <Cursor />
       <ScrollProgress />
       <Background />

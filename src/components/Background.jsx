@@ -1,149 +1,48 @@
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-import * as THREE from 'three';
-
-function Stars() {
-  const ref = useRef();
-  const { mouse } = useThree();
-  const [sphere] = useMemo(() => {
-    const sphere = new Float32Array(3000 * 3);
-    for (let i = 0; i < 3000; i++) {
-      sphere[i * 3] = (Math.random() - 0.5) * 20;
-      sphere[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      sphere[i * 3 + 2] = (Math.random() - 0.5) * 20;
-    }
-    return [sphere];
-  }, []);
-
-  useFrame((state, delta) => {
-    ref.current.rotation.x = mouse.y * 0.1 - delta / 10;
-    ref.current.rotation.y = mouse.x * 0.1 - delta / 15;
-  });
-
-  return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
-        <PointMaterial
-          color="#ffffff"
-          size={0.05}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
-      </Points>
-    </group>
-  );
-}
-
-function FloatingCubes() {
-  const cubesRef = useRef([]);
-
-  const cubes = useMemo(() => {
-    return Array.from({ length: 15 }, (__, i) => ({
-      position: [
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20,
-      ],
-      rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
-      scale: Math.random() * 0.5 + 0.5,
-    }));
-  }, []);
-
-  useFrame((state) => {
-    cubesRef.current.forEach((cube, i) => {
-      if (cube) {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        cube.position.y += Math.sin(state.clock.elapsedTime + i) * 0.002;
-      }
-    });
-  });
-
-  return (
-    <>
-      {cubes.map((cube, i) => (
-        <mesh
-          key={i}
-          ref={(el) => (cubesRef.current[i] = el)}
-          position={cube.position}
-          rotation={cube.rotation}
-          scale={cube.scale}
-        >
-          <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial
-            color={`hsl(${200 + i * 10}, 70%, 60%)`}
-          />
-        </mesh>
-      ))}
-    </>
-  );
-}
-
-function Particles() {
-  const ref = useRef();
-  const [particles] = useMemo(() => {
-    const particles = new Float32Array(1000 * 3);
-    for (let i = 0; i < 1000; i++) {
-      particles[i * 3] = (Math.random() - 0.5) * 30;
-      particles[i * 3 + 1] = (Math.random() - 0.5) * 30;
-      particles[i * 3 + 2] = (Math.random() - 0.5) * 30;
-    }
-    return [particles];
-  }, []);
-
-  useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 20;
-    ref.current.rotation.y -= delta / 25;
-  });
-
-  return (
-    <Points ref={ref} positions={particles} stride={3} frustumCulled={false}>
-      <PointMaterial
-        color="#4f46e5"
-        size={0.02}
-        sizeAttenuation={true}
-        depthWrite={false}
-        transparent
-        opacity={0.6}
-      />
-    </Points>
-  );
-}
-
-function FloatingTorus() {
-  const torusRef = useRef();
-
-  useFrame((state) => {
-    if (torusRef.current) {
-      torusRef.current.rotation.x += 0.005;
-      torusRef.current.rotation.y += 0.01;
-      torusRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.5;
-    }
-  });
-
-  return (
-    <mesh ref={torusRef} position={[5, 0, -5]}>
-      <torusKnotGeometry args={[1, 0.4, 100, 16]} />
-      <meshStandardMaterial color="#ff6b6b" wireframe />
-    </mesh>
-  );
-}
+import React from 'react';
 
 const Background = () => {
   return (
-    <div className="fixed inset-0 z-0">
-      <Canvas
-        camera={{ position: [0, 0, 1], fov: 75 }}
-        style={{ background: 'transparent' }}
-      >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <Stars />
-        <Particles />
-        <FloatingCubes />
-        <FloatingTorus />
-      </Canvas>
+    <div className="fixed inset-0 z-0 bg-black">
+      {/* Matrix-style animated background */}
+      <div className="absolute inset-0">
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+        {/* Grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}
+        ></div>
+
+        {/* Matrix characters overlay */}
+        <div className="absolute inset-0 pointer-events-none matrix-overlay">
+          <div className="text-green-400 font-mono text-xs leading-none whitespace-pre-line break-all h-full overflow-hidden select-none">
+            {Array.from({ length: 60 }, (_, rowIndex) =>
+              Array.from({ length: 120 }, (_, colIndex) =>
+                Math.random() > 0.95 ? String.fromCharCode(33 + Math.floor(Math.random() * 94)) : ' '
+              ).join('')
+            ).join('\n')}
+          </div>
+        </div>
+
+        {/* Connecting lines pattern */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="matrix-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+              <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#00ff88" strokeWidth="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#matrix-grid)" />
+        </svg>
+      </div>
     </div>
   );
 };

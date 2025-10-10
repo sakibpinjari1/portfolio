@@ -19,6 +19,63 @@ body.light {
   color: #1a202c;
 }
 
+/* Matrix Background Animation */
+@keyframes matrix-glow {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+
+@keyframes matrix-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.matrix-overlay {
+  animation: matrix-glow 4s ease-in-out infinite;
+  text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px #00ff88;
+}
+
+.matrix-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.03) 50%,
+    transparent 100%
+  );
+  animation: matrix-flicker 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Particle Network Enhancements */
+@keyframes particle-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+  }
+}
+
+.particle-network {
+  animation: particle-glow 4s ease-in-out infinite;
+}
+
+/* Connection line animations */
+@keyframes connection-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+.connection-line {
+  animation: connection-pulse 3s ease-in-out infinite;
+}
+
 html {
   scroll-behavior: smooth;
 }

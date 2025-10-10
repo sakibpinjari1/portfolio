@@ -83,6 +83,7 @@ const Contact = () => {
       ref={ref}
       id="contact"
       className="min-h-screen flex items-center justify-center py-20 px-4 relative z-10"
+      style={{ marginBottom: '200px' }}
     >
       <div className="max-w-4xl mx-auto">
         <motion.h2
