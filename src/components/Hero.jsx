@@ -128,10 +128,20 @@ const Hero = () => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const downloadResume = () => {
+    const resumePath = '/sakib shaikh resume.pdf';
+    const link = document.createElement('a');
+    link.href = resumePath;
+    link.download = 'Sakib_Shaikh_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <motion.section
       id="home"
-      className="min-h-screen flex items-center justify-center relative z-10 px-4 overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative z-10 px-4 sm:px-6 lg:px-8 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -149,33 +159,28 @@ const Hero = () => {
       {/* Subtle Content Overlay for better readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-20">
-        {/* Main Content Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-8"
-        >
-          {/* Hero Header Section */}
+      <div className="max-w-6xl mx-auto relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center min-h-[80vh] py-8 sm:py-12 lg:py-0">
+
+          {/* Left Content Section */}
           <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-center lg:text-left space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
             {/* Greeting Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-6 py-3"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-4 py-2"
               whileHover={{ scale: 1.05 }}
             >
               <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
               <span className="text-blue-400 text-sm font-medium">Hello, I'm</span>
             </motion.div>
 
-            {/* Name - Large and Prominent */}
+            {/* Name - Responsive sizing for all screens */}
             <motion.h1
-              className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -185,54 +190,52 @@ const Hero = () => {
               </span>
             </motion.h1>
 
-            {/* Role with Icon */}
+            {/* Role */}
             <motion.div
-              className="flex items-center justify-center gap-3 text-2xl md:text-3xl text-gray-300 font-light"
+              className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 text-base sm:text-lg md:text-xl text-gray-300 font-light"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
+              <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
               <span>Full Stack Developer</span>
-              <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-purple-400"></div>
+              <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-purple-400"></div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="text-sm sm:text-base md:text-lg text-gray-300 h-6 flex items-center justify-center lg:justify-start font-light">
+                <span>{displayText}</span>
+                <span className="animate-pulse text-blue-400 ml-1">|</span>
+              </div>
+
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-lg mx-auto lg:mx-0 px-2 sm:px-0">
+                Passionate about creating beautiful, functional digital experiences with modern web technologies.
+              </p>
             </motion.div>
           </motion.div>
 
-          {/* Description Section */}
+          {/* Right Action Section */}
           <motion.div
-            className="max-w-3xl mx-auto space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col justify-center items-center lg:items-end space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {/* Typewriter Effect */}
-            <div className="text-xl md:text-2xl text-gray-300 h-8 flex items-center justify-center font-light">
-              <span>{displayText}</span>
-              <span className="animate-pulse text-blue-400 ml-1">|</span>
-            </div>
-
-            {/* Description */}
-            <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              Passionate about creating beautiful, functional digital experiences with modern web technologies.
-            </p>
-          </motion.div>
-
-          {/* Action Section */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            {/* Primary Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* Main CTA Buttons */}
+            <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
               <motion.button
                 onClick={() => scrollToSection('projects')}
-                className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
+                className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden text-sm sm:text-base"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   View My Work
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -240,17 +243,29 @@ const Hero = () => {
 
               <motion.button
                 onClick={() => scrollToSection('contact')}
-                className="border-2 border-gray-600 hover:border-blue-400 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:bg-blue-400/10"
+                className="border-2 border-gray-600 hover:border-blue-400 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 hover:bg-blue-400/10 text-sm sm:text-base"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Get In Touch
               </motion.button>
+
+              <motion.button
+                onClick={downloadResume}
+                className="border-2 border-gray-600 hover:border-green-400 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 hover:bg-green-400/10 text-sm sm:text-base"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <FaDownload className="text-sm" />
+                  View Resume
+                </span>
+              </motion.button>
             </div>
 
             {/* Social Links */}
             <motion.div
-              className="flex justify-center gap-8"
+              className="flex justify-center lg:justify-end gap-4 sm:gap-6 w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
@@ -263,7 +278,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <div className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700/50 rounded-full flex items-center justify-center border border-gray-700/50 hover:border-gray-600 transition-all duration-300">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800/50 hover:bg-gray-700/50 rounded-full flex items-center justify-center border border-gray-700/50 hover:border-gray-600 transition-all duration-300">
                   <FaGithub size={20} />
                 </div>
                 <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">GitHub</span>
@@ -277,27 +292,27 @@ const Hero = () => {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <div className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700/50 rounded-full flex items-center justify-center border border-gray-700/50 hover:border-blue-400 transition-all duration-300">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800/50 hover:bg-gray-700/50 rounded-full flex items-center justify-center border border-gray-700/50 hover:border-blue-400 transition-all duration-300">
                   <FaLinkedin size={20} />
                 </div>
                 <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">LinkedIn</span>
               </motion.a>
             </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Enhanced Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         onClick={() => scrollToSection('about')}
       >
-        <div className="flex flex-col items-center gap-3">
-          <span className="text-gray-400 text-sm font-light">Scroll to explore</span>
-          <div className="w-8 h-8 border-2 border-gray-600 rounded-full flex items-center justify-center hover:border-blue-400 transition-colors duration-300">
-            <FaArrowDown className="text-gray-400 hover:text-blue-400 transition-colors text-sm" />
+        <div className="flex flex-col items-center gap-2 sm:gap-3">
+          <span className="text-gray-400 text-xs sm:text-sm font-light">Scroll to explore</span>
+          <div className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-gray-600 rounded-full flex items-center justify-center hover:border-blue-400 transition-colors duration-300">
+            <FaArrowDown className="text-gray-400 hover:text-blue-400 transition-colors text-xs sm:text-sm" />
           </div>
         </div>
       </motion.div>

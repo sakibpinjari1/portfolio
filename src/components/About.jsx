@@ -1,15 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaGraduationCap, FaCode, FaBicycle, FaFutbol, FaRocket, FaLightbulb } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaMapMarkerAlt, FaEnvelope, FaGraduationCap, FaCode, FaBicycle, FaFutbol, FaRocket, FaLightbulb } from 'react-icons/fa';
 
 const About = () => {
   const ref = useRef(null);
+  const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
+  // Eye tracking animation based on scroll
+  const eyeY = useTransform(scrollYProgress, [0, 1], [0, 10]);
 
   return (
     <motion.section
@@ -129,54 +133,117 @@ const About = () => {
             viewport={{ once: true }}
             className="flex justify-center"
           >
-            <div className="relative">
+            <div className="relative w-80">
+              {/* Subtle Profile Card */}
               <motion.div
-                className="w-80 h-96 bg-gradient-to-br from-gray-800 to-gray-900 p-1 rounded-3xl shadow-2xl"
+                ref={cardRef}
+                className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl shadow-xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="w-full h-full rounded-3xl bg-gray-900 flex flex-col items-center justify-center p-8">
-                  {/* Profile Avatar */}
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-3xl font-bold text-white mb-6 shadow-lg">
+                {/* Clean Header */}
+                <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 p-6 text-center border-b border-gray-700/30">
+                  <motion.div
+                    className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold text-white mx-auto mb-3 shadow-lg"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     SS
-                  </div>
+                  </motion.div>
+                  <h3 className="text-white text-lg font-bold">Sakib Shaikh</h3>
+                  <p className="text-blue-300 text-sm">Full Stack Developer</p>
+                </div>
 
-                  {/* Status Badge */}
-                  <div className="bg-green-500/20 border border-green-500/30 rounded-full px-4 py-2 mb-6">
-                    <span className="text-green-400 text-sm font-medium">Available for Projects</span>
-                  </div>
-
-                  {/* Quick Stats */}
-                  <div className="grid grid-cols-2 gap-4 w-full mb-6">
-                    <div className="text-center p-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                      <div className="text-lg font-bold text-blue-400">AIML</div>
-                      <div className="text-xs text-gray-400">Student</div>
-                    </div>
-                    <div className="text-center p-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                      <div className="text-lg font-bold text-purple-400">Web Dev</div>
-                      <div className="text-xs text-gray-400">Focus</div>
+                {/* Essential Info */}
+                <div className="p-6 space-y-4">
+                  {/* Status */}
+                  <div className="text-center">
+                    <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-green-400 text-xs font-medium">Available for Projects</span>
                     </div>
                   </div>
 
-                  {/* Interests */}
-                  <div className="flex gap-4">
-                    <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
-                      <FaBicycle className="text-orange-400" />
+                  {/* Quick Info */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="text-center p-3 bg-gray-800/30 rounded-lg border border-gray-700/30">
+                      <div className="text-blue-400 font-bold text-sm">4th Year</div>
+                      <div className="text-gray-400 text-xs">AIML Student</div>
                     </div>
-                    <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                      <FaFutbol className="text-purple-400" />
+                    <div className="text-center p-3 bg-gray-800/30 rounded-lg border border-gray-700/30">
+                      <div className="text-green-400 font-bold text-sm">Web Dev</div>
+                      <div className="text-gray-400 text-xs">Focus Area</div>
                     </div>
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="space-y-2 pt-2 border-t border-gray-700/30">
+                    <div className="flex items-center gap-2 text-gray-300 text-sm">
+                      <FaEnvelope className="text-blue-400 text-sm" />
+                      <span className="text-xs">sakibshaikh.jsx@gmail.com</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-300 text-sm">
+                      <FaMapMarkerAlt className="text-green-400 text-sm" />
+                      <span className="text-xs">India</span>
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex justify-center gap-3 pt-3 border-t border-gray-700/30">
+                    <motion.a
+                      href="https://github.com/sakibpinjari"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 border border-gray-700/30 hover:border-gray-600"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <FaGithub size={14} />
+                    </motion.a>
+                    <motion.a
+                      href="https://www.linkedin.com/in/sakib-pinjari-a72536272"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg flex items-center justify-center text-gray-400 hover:text-blue-400 transition-all duration-300 border border-gray-700/30 hover:border-blue-400"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <FaLinkedin size={14} />
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Floating Elements */}
+              {/* Eye Tracking Animation */}
               <motion.div
-                className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg"
-                animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                className="absolute -top-4 -right-4 flex gap-2"
+                style={{ y: eyeY }}
               >
-                <FaCode className="text-white text-lg" />
+                {/* Left Eye */}
+                <motion.div
+                  className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center border border-gray-600"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <motion.div
+                    className="w-2 h-2 bg-blue-400 rounded-full"
+                    animate={{ y: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </motion.div>
+
+                {/* Right Eye */}
+                <motion.div
+                  className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center border border-gray-600"
+                  animate={{ scale: [1.1, 1, 1.1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <motion.div
+                    className="w-2 h-2 bg-purple-400 rounded-full"
+                    animate={{ y: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                  />
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>

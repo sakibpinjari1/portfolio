@@ -8,7 +8,6 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ThemeToggle from './components/ThemeToggle';
 import Cursor from './components/Cursor';
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
       <ScrollProgress />
       <Background />
       <Header />
-      <ThemeToggle />
       <Hero />
       <About />
       <Skills />
