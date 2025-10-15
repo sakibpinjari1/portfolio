@@ -34,10 +34,10 @@ const Experience = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-4 relative z-10">
+    <section className="min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="max-w-4xl mx-auto">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-white text-center mb-16"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -66,11 +66,11 @@ const Experience = () => {
               {/* Content */}
               <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                 <motion.div
-                  className="bg-gray-800/80 rounded-xl p-6 border border-gray-700 hover:bg-gray-800 transition-all duration-300"
+                  className="bg-gray-800/80 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-700 hover:bg-gray-800 transition-all duration-300"
                   whileHover={{ scale: 1.02, y: -5 }}
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">{exp.title}</h3>
                     <span className="text-blue-400 font-medium text-sm mt-2 md:mt-0">{exp.year}</span>
                   </div>
                   <p className="text-purple-300 font-medium mb-3">{exp.company}</p>

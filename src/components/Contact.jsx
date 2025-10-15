@@ -82,12 +82,11 @@ const Contact = () => {
     <motion.section
       ref={ref}
       id="contact"
-      className="min-h-screen flex items-center justify-center py-20 px-4 relative z-10"
-      style={{ marginBottom: '200px' }}
+      className="min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative z-10"
     >
       <div className="max-w-4xl mx-auto">
         <motion.h2
-          className="text-3xl md:text-5xl font-bold text-white text-center mb-12"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-10 lg:mb-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

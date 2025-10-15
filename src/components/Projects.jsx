@@ -58,8 +58,7 @@ const Projects = () => {
     <motion.section
       ref={ref}
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20 px-4 relative z-10"
-      style={{ marginBottom: '100px' }}
+      className="min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative z-10"
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
@@ -70,7 +69,7 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             Featured Projects
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">

@@ -32,9 +32,9 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-black border-b border-gray-700'
+          ? 'bg-black/95 backdrop-blur-md border-b border-gray-700/50'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}

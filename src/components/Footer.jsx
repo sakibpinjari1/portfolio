@@ -25,7 +25,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 z-50 mt-20 shadow-lg">
+    <footer className="relative bg-gray-900/95 backdrop-blur-sm border-t border-gray-700/50 z-30 mt-12 sm:mt-16 lg:mt-20 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}

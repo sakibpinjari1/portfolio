@@ -34,7 +34,7 @@ const Cursor = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed top-0 left-0 w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-20 mix-blend-difference"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
@@ -48,7 +48,7 @@ const Cursor = () => {
         }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border-2 border-purple-400 rounded-full pointer-events-none z-40"
+        className="fixed top-0 left-0 w-8 h-8 border-2 border-purple-400 rounded-full pointer-events-none z-10"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,

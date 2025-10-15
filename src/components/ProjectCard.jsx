@@ -23,9 +23,9 @@ const ProjectCard = ({ project, index }) => {
          </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
               {project.title}
             </h3>
             <div className="flex gap-2">
